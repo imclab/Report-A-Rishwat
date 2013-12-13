@@ -1,7 +1,7 @@
 Report A Rishwat
 ================================================================================
 
-Report a Rishwat is a web application which can be used by anyone anywhere (literaly) to report events of corruption.
+Report a Rishwat is a web application which can be used by anyone anywhere (literally) to report events of corruption.
 
 ================================================================================
 
