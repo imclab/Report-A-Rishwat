@@ -29,11 +29,8 @@ def teardown_request(exception):
     g.db.close()
 
 @app.route('/')
-def root():
-    return render_template('index.html')
-
 @app.route('/index')
-def mainpage():
+def root():
     return render_template('index.html')
 
 @app.route('/list')
