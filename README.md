@@ -9,3 +9,5 @@ Requirements: In order to run web application, you will need python 2.7 and flas
 The SMS API instructions will be uploaded soon.
 
 ================================================================================
+
+Developed by: Umair Chachar, Jeremy Higgs, Waqas Ahmed, Adam Azad, Rumaisa Mughal
