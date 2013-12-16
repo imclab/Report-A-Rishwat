@@ -1,5 +1,17 @@
-	
-	
+function validate() {
+    var form = document.forms["submit"];
+    if (form["date"].value == null ||
+        form["location"].value == null ||
+        form["service"].value == null ||
+        form["officer"].value == null ||
+        form["amount"].value == null) {
+            alert("Fields incomplete!");
+            return false;
+        }
+    else {
+        return true;
+    }
+}
 
 $(document).ready(function() {
 

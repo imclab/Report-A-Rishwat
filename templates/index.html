@@ -7,6 +7,8 @@
     <meta name="description" content="Report Rishwat">
     <meta name="author" content="CivHackathon">
 
+    <script src="/static/js/app.js"></script>
+
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <link href="/static/css/custom.css" rel="stylesheet">
     <style>
@@ -34,7 +36,7 @@
                   data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span class="icon-bar">></span>
           </button>
           <a class="brand" href="/index">Report-a-Rishwat</a>
           <div class="nav-collapse collapse">
@@ -52,11 +54,11 @@
     </div>
     <div class="posted row">
       <div class="span5">
-        <img src="/static/images/info.png" style="margin-top:-20px;">
+        <img src="/static/images/info.png" style="margin-top:-20px; margin-bottom:-20px;" height="90%" width="90%">
       </div>
       <div class="form-bg span5 pull-right" style="padding:40px;">
         <h1>Report-a-Rishwat</h1>
-          <form method="post" name="submit" action="/ThankYou">
+        <form method="post" name="submit" action="/ThankYou" onsubmit="return validate();">
             <p>
               <input type="text" placeholder="Date it took place" 
                      name="date" />
@@ -85,6 +87,18 @@
             </p>
     	  </form>
 		</div>
+      </div>
+    </div>
+
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand">
+            <a href="http://www.codeforpakistan.org/">
+              <img src="/static/images/COPIcon.png" height="100" width="90">
+            </a>
+          </a>
+        </div>
       </div>
     </div>
     <script src="/static/js/bootstrap-transition.js"></script>
