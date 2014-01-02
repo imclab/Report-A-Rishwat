@@ -34,11 +34,11 @@ def root():
     return render_template('index.html')
 
 @app.route('/list')
-def mainpage():
+def list():
     return render_template('list.html')
 
 @app.route('/categories')
-def mainpage():
+def categories():
     return render_template('categories.html')
 
 @app.route('/results')
