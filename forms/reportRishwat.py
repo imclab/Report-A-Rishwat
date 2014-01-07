@@ -1,7 +1,7 @@
 from wtforms import Form, TextField, validators, DateField, SelectField, TextAreaField
 
 
-class RegistrationForm(Form):
+class ReportRishwatForm(Form):
     date = DateField('Date it took place',format='MM-DD-YYYY',validators=[validators.required()])
     province = SelectField('Administrative Unit',
                            choices=[(1, 'Punjab'), (2, 'Sindh'), (3, 'Balochistan'), (4, 'Khyber Pakhtunkhwa')

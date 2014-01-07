@@ -4,7 +4,7 @@ from flask import Flask, request, \
     g, render_template
 
 # configuration
-from forms.reportRishwat import RegistrationForm
+from forms.reportRishwat import ReportRishwatForm
 
 DATABASE = './schema.sql'
 DEBUG = True
@@ -28,7 +28,7 @@ def teardown_request(exception):
 @app.route('/')
 @app.route('/index')
 def root():
-    form = RegistrationForm(request.form)
+    form = ReportRishwatForm(request.form)
     return render_template('index.html', form=form)
 
 @app.route('/list')
@@ -51,7 +51,7 @@ def mainpage():
 
 @app.route('/ThankYou', methods=['POST'])
 def add_entry():
-    form = RegistrationForm(request.form)
+    form = ReportRishwatForm(request.form)
     if request.method == 'POST' and form.validate():
 
         g.db.execute('insert into petitions (' + \
