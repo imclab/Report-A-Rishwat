@@ -1,14 +1,11 @@
 from __future__ import with_statement
-from contextlib import closing
 import sqlite3
 from flask import Flask, request, \
-                  session, g, redirect, \
-                  url_for, abort, render_template, flash
-import time
-import random
-import string
+    g, render_template
 
 # configuration
+from forms.reportRishwat import ReportRishwatForm
+
 DATABASE = './schema.sql'
 DEBUG = True
 SECRET_KEY = 'development key'
@@ -31,7 +28,8 @@ def teardown_request(exception):
 @app.route('/')
 @app.route('/index')
 def root():
-    return render_template('index.html')
+    form = ReportRishwatForm(request.form)
+    return render_template('index.html', form=form)
 
 @app.route('/list')
 def list():
@@ -53,26 +51,24 @@ def mainpage():
 
 @app.route('/ThankYou', methods=['POST'])
 def add_entry():
-    curtime = time.localtime()
-    PetitionID = random.randint(1,100000)
-    entrytime = "%d/%d,%d" % (curtime.tm_mon, 
-                              curtime.tm_mday, 
-                              curtime.tm_year)
-    g.db.execute('insert into petitions (PID, ' + \
-                 'AccusName, Crime, Location, ' + \
-                 'DateOfCrime, DateOfPetition, ' + \
-                 'Addinfo, BribePaid) ' + \
-                 'values (?,?,?,?,?,?,?,?)',
-                 [PetitionID, 
-                  request.form['officer'], 
-                  request.form['service'], 
-                  request.form['location'], 
-                  request.form['date'], 
-                  entrytime, 
-                  request.form['description'],
-                  int(request.form['amount'])])
-    g.db.commit()
-    return render_template('Thankyou.html')
+    form = ReportRishwatForm(request.form)
+    if request.method == 'POST' and form.validate():
+
+        g.db.execute('insert into petitions (' + \
+                     'DateOfCrime, AdministrativeUnit, Location, ' + \
+                     'AccusName, BribePaid, ' + \
+                     'Description) ' + \
+                     'values (?,?,?,?,?,?,?,?)',
+                     [request.form['date'],
+                      request.form['province'],
+                      request.form['location'],
+                      request.form['officer'],
+                      int(request.form['bribe'],
+                      request.form['description']
+                      )])
+        g.db.commit()
+        return render_template('Thankyou.html')
+    return render_template('index.html', form=form)
 
 if __name__ == '__main__':
     app.run()
